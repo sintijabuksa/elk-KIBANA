@@ -1,0 +1,87 @@
+//create spaces api
+
+POST kbn:api/spaces/space
+{
+  "id": "azure",
+  "name": "Azure",
+  "description" : "Azure Resources Kibana Space",
+  "color": "#AD7BE8",
+  "initials": "AR",
+  "disabledFeatures": [],
+  "imageUrl": ""
+}
+
+//create index
+PUT /postgredb-logs-azure
+
+//create index lifecicle policy
+//PUT _ilm/policy/logs-ilm
+
+//create component templates (one for logs mapping, another one for generic settings)
+PUT _component_template/logs-mapping
+{
+  "template": {
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "message": {
+          "type": "text"
+        }
+      }
+    }
+  },
+  "_meta": {
+    "description": "Mappings for @timestamp and message fields"
+  }
+}
+
+PUT _component_template/generic-settings
+{
+  "template": {
+    "settings": {
+      "index.number_of_shards": 1,
+      "index.number_of_replicas": 1
+    }
+  },
+  "_meta": {
+    "description": "Generic settings"
+  }
+}
+
+//create index template
+POST _index_template/postgredb-logs-azure
+{
+  "index_patterns": ["postgredb-logs*"],
+  "data_stream": { },
+  "priority": 500,
+  "composed_of": ["generic-settings", "logs-mapping"],
+  "version":1,
+  "_meta": {
+    "description": "Logs custom index template"
+  }
+}
+
+//create data stream
+PUT _data_stream/postgredb-logs
+
+////create index pattern
+//POST kbn:api/index_patterns/index_pattern
+//{
+//  "index_pattern": {
+//    "title": "postgredb-logs*" }
+//}
+
+//create data view of logs specified in index template "index_pattern"
+POST kbn:api/data_views/data_view
+{
+  "data_view": {
+    "title": "postgredb-logs*",
+    "name": "postgredb-logs*",
+    "namespaces": [
+      "azure"
+      ],
+    "fields": {}
+  }
+}
