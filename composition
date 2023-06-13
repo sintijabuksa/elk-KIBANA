@@ -4,14 +4,13 @@ POST kbn:api/spaces/space
   "id": "azure",
   "name": "Azure",
   "description" : "Azure Resources Kibana Space",
-  "initials": "AR"
-  //can be more properties specified
 }
 
 //update space
 PUT kbn:api/spaces/space/azure
 {
 "initials": "AR"
+//can be more properties specified
 }
 
 //create index
