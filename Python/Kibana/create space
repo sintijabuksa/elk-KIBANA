@@ -6,7 +6,6 @@ import json
 session = requests.Session()
 session.auth = HTTPBasicAuth(credentials.username, credentials.password)
 kibana_url = "https://observability-34c3a7.kb.westeurope.azure.elastic-cloud.com:9243"
-
 headers = {"kbn-xsrf": "true", "Content-Type": "application/json"}
 
 #define properties for the space 
