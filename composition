@@ -33,7 +33,7 @@ POST /index_template/database-template
   }
 }
 
-//create data view
+//create data view to explore the data in the database* indices
 POST kbn:api/data_views/data_view
 {
   "data_view": {
