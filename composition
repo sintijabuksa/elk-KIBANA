@@ -61,7 +61,6 @@ POST kbn:api/data_views/data_view
   "data_view": {
     "id": "",
     "title": "database*",
-    "timeFieldName": "@timestamp",
     "name": "Database logs data view",
     "namespaces": [
       "azure"
