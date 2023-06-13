@@ -16,20 +16,6 @@ PUT kbn:api/spaces/space/azure
 //create index
 PUT /database
 
-
-PUT _component_template/generic-settings
-{
-  "template": {
-    "settings": {
-      "index.number_of_shards": 1,
-      "index.number_of_replicas": 1
-    }
-  },
-  "_meta": {
-    "description": "Generic settings"
-  }
-}
-
 //create index template
 POST /index_template/database-template
 {
