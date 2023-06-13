@@ -55,7 +55,6 @@ PUT database/_doc/logs-document-2
 "message": "192.168.2.10:ossecdb LOG:  disconnection: session time: 0:00:35.79 user=ossec_user database=ossecdb host=192.168.2.10 port=3584"
 }
 
-
 //create data view to explore the data in the database* indices
 POST kbn:api/data_views/data_view
 {
