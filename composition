@@ -43,6 +43,19 @@ PUT _index_template/database-template
   }
 }
 
+//create two log documents
+PUT database/_doc/logs-document-1
+{
+"@timestamp": "2023-04-30 19:22:21.469 ADT",
+"message": "192.168.2.99:ossecdb LOG:  disconnection: session time: 0:00:00.95 user=ossec_user database=ossecdb host=192.168.2.99 port=52136"
+}
+PUT database/_doc/logs-document-2
+{
+"@timestamp": "2023-05-27 11:02:46.444 ADT",
+"message": "192.168.2.10:ossecdb LOG:  disconnection: session time: 0:00:35.79 user=ossec_user database=ossecdb host=192.168.2.10 port=3584"
+}
+
+
 //create data view to explore the data in the database* indices
 POST kbn:api/data_views/data_view
 {
