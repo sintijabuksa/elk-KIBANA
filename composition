@@ -45,3 +45,6 @@ POST kbn:api/data_views/data_view
     "fields": {}
   }
 }
+
+//saved objects
+
