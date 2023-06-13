@@ -17,13 +17,23 @@ PUT kbn:api/spaces/space/azure
 PUT /database
 
 //create index template
-POST /index_template/database-template
+PUT _index_template/database-template
 {
   "index_patterns": ["database*"],
   "template": {
     "settings": {
       "number_of_shards": 1,
       "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "message": {
+          "type": "text"
+        }
+      }
     }
   },
   "priority": 500,
