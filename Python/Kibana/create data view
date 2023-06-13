@@ -9,7 +9,7 @@ kibana_url = "https://observability-34c3a7.kb.westeurope.azure.elastic-cloud.com
 headers = {"kbn-xsrf": "true", "Content-Type": "application/json"}
 
 #define properties for the index pattern 
-data_view = {"data_view": {"id": "", "version": "", "title": "database*", "name": "Database logs data view", "namespaces": ["azure"], "fields": {} }}
+data_view = {"data_view": {"id": "", "version": "", "title": "database*", "timeFieldName": "@timestamp", "name": "Database logs data view", "namespaces": ["azure"], "fields": {} }}
 
 r = session.post(kibana_url + "/api/data_views/data_view", headers=headers, json=data_view)
 print(r.json())
