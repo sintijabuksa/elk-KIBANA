@@ -31,21 +31,23 @@ PUT _component_template/generic-settings
 }
 
 //create index template
-POST _index_template/postgredb-logs-azure
+POST /index_template/database-template
 {
   "index_patterns": ["database*"],
-  "data_stream": { },
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    }
+  },
   "priority": 500,
-  "composed_of": ["generic-settings", "logs-mapping"],
   "version":1,
   "_meta": {
-    "description": "Logs custom index template"
+    "description": "Database custom index template"
   }
 }
 
-//
-
-//create data view API (index_pattern 8.0.0 depreciated, data view comes instead)
+//create data view
 POST kbn:api/data_views/data_view
 {
   "data_view": {
