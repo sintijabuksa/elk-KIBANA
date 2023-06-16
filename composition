@@ -29,6 +29,7 @@ PUT _index_template/database-template
       "properties": {
         "date": {
           "type": "date",
+          "format": "yyyy-MM-dd"
         },
         "message": {
           "type": "text"
