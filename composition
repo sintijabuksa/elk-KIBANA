@@ -27,7 +27,7 @@ PUT _index_template/database-template
     },
     "mappings": {
       "properties": {
-        "date": {
+        "timestamp": {
           "type": "date",
           "format": "yyyy-MM-dd"
         },
